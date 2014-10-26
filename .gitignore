@@ -1,0 +1,10 @@
+# Composer
+composer.phar
+vendor/*
+
+# App stuff
+app.db
+web/css/.sass-cache/*
+
+# PHPStorm
+.idea

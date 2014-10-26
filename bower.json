@@ -1,0 +1,7 @@
+{
+  "name": "TaskCardboard",
+  "dependencies": {
+    "font-awesome": "4.2.x",
+    "marked": "0.3.x"
+  }
+}
