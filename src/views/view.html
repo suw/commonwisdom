@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Viewing - {{fileName}}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div id="markdownContents"></div>
+        </div>
+        <div class="col-md-6">
+            <form role="form">
+                <textarea id="fileContents">{{ fileContents }}</textarea>
+                <input type="submit" class="btn btn-primary" value="Save">
+            </form>
+        </div>
+    </div>
+{% endblock %}

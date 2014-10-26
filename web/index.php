@@ -1,0 +1,15 @@
+<?php
+
+// Where markdown files are stored
+define('FILE_DIRECTORY', __DIR__ . '/files');
+
+$filename = __DIR__.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
+if (php_sapi_name() === 'cli-server' && is_file($filename)) {
+  return false;
+}
+
+$app = require __DIR__.'/../src/app.php';
+
+$app['debug'] = true;
+$app->run();
+?>
