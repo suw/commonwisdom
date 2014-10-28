@@ -14,10 +14,24 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
+$app->get('/', function() use ($app) {
+    return $app['twig']->loadTemplate('main.html')->render([]);
+});
 
-$app->get('/view/{fileName}', function ($fileName) use ($app) {
+
+$app->get('/list/', function () use ($app) {
+    $controller = new ViewFileController($app);
+    return $controller->renderFileList();
+});
+
+$app->get('/edit/{fileName}', function ($fileName) use ($app) {
     $controller = new ViewFileController($app);
     return $controller->renderFile($fileName);
+});
+
+$app->post('/edit/{fileName}', function (Request $request, $fileName) use ($app) {
+    $controller = new ViewFileController($app);
+    return $controller->saveAndRenderFile($request, $fileName);
 });
 
 return $app;

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Viewing file list{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-group">
+                {% for file in files %}
+                    <li class="list-group-item"><a href="/edit/{{file}}">{{file}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

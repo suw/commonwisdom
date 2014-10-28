@@ -12,9 +12,11 @@ $(function() {
         $('#markdownContents').html(marked($('#fileContents').val(), options));
     };
 
-    renderMarkdown();
 
     $('#fileContents').keyup(function() {
         renderMarkdown();
-    })
+    });
+
+    // Init
+    renderMarkdown();
 });
