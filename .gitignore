@@ -5,7 +5,6 @@ vendor/*
 # App stuff
 app.db
 web/css/.sass-cache/*
-web/files/*.md
 
 # PHPStorm
 .idea

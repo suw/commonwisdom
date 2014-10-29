@@ -9,9 +9,8 @@
 namespace suw\commonwisdom\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
-use suw\commonwisdom\Controllers\DefaultController;
 
-class ViewFileController extends DefaultController
+class ViewFileController
 {
 
     /**
@@ -37,19 +36,33 @@ class ViewFileController extends DefaultController
     }
 
     /**
-     * Render a file with a given file name
+     * Render the edit view of a file
      *
      * @param $fileName
      * @return mixed
      */
-    public function renderFile($fileName) {
-        $fileLocation = $this->makeFileLocation($fileName);
+    public function renderEditFileView($fileName) {
 
-        if (file_exists($fileLocation)) {
-            $fileContents = file_get_contents($fileLocation);
-        } else {
-            $fileContents = "# $fileName";
-        }
+        $fileContents = $this->getFileContents($fileName);
+
+        $template = $this->twig->loadTemplate('edit.html');
+        return $template->render(
+            array(
+                'fileContents' => $fileContents,
+                'fileName'    => $fileName
+            )
+        );
+    }
+
+    /**
+     * Render a view-only page for file with a given file name
+     *
+     * @param $fileName
+     * @return mixed
+     */
+    public function renderFileView($fileName) {
+
+        $fileContents = $this->getFileContents($fileName);
 
         $template = $this->twig->loadTemplate('view.html');
         return $template->render(
@@ -58,7 +71,25 @@ class ViewFileController extends DefaultController
                 'fileName'    => $fileName
             )
         );
+    }
 
+    /**
+     * Get the markdown contents of a file
+     *
+     * @param $fileName
+     * @return string
+     */
+    private function getFileContents($fileName)
+    {
+        $fileLocation = $this->makeFileLocation($fileName);
+
+        if (file_exists($fileLocation)) {
+            $fileContents = file_get_contents($fileLocation);
+        } else {
+            $fileContents = "# $fileName";
+        }
+
+        return $fileContents;
     }
 
     /**

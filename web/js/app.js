@@ -3,7 +3,7 @@ $(function() {
     var options = {
         gfm: true,
         tables: true,
-        breaks: true,
+        breaks: false,
         pedantic: false,
         sanitize: true
     };

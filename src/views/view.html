@@ -4,14 +4,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div id="markdownContents"></div>
         </div>
-        <div class="col-md-6">
-            <form role="form" method="post" action="/view/{{fileName}}">
-                <textarea name="fileContents" id="fileContents">{{ fileContents }}</textarea>
-                <input type="submit" class="btn btn-primary" value="Save">
-            </form>
-        </div>
+        <input type="hidden" name="fileContents" id="fileContents" value="{{ fileContents }}"/>
     </div>
 {% endblock %}
