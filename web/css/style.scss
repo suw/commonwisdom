@@ -1,7 +1,12 @@
-#fileContents {
-  border: 0px;
+#editor {
+  border: 1px solid rgb(50,50,50);
   width: 100%;
-  height: 600px;
+  background-color: #666;
+  color: rgb(230,230,230);
+  font-family: "Source Code Pro", monospace;
+  font-weight: 300;
+  padding: 5px;
+
 }
 
 .container {
@@ -9,7 +14,36 @@
 }
 
 .footer {
+  margin-top: 20px;
   color: #666;
   font-size: 0.8em;
   text-align: center;
+}
+
+#markdownContents {
+  border: 1px solid rgb(190,190,190);
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "Lato", sans-serif;
+
+  h1,h2,h3,h4,h6,h6 {
+    margin-top: 5px;
+  }
+}
+
+#save-success {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  div.alert {
+    background: rgba(223, 240, 216, 0.5);
+  }
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+.edit-controls {
+  margin-bottom: 5px;
 }

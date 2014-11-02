@@ -3,15 +3,35 @@
 {% block title %}Editing - {{fileName}}{% endblock %}
 
 {% block content %}
+
+
+{% if displaySavedNote %}
+<div id="save-success">
+    <div class="alert alert-success" role="alert">
+        <strong><i class="fa fa-check"></i></strong> File successfully saved
+    </div>
+</div>
+{% endif %}
+
+
+<form role="form" method="post" action="/edit/{{fileName}}">
     <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+    <div class="row edit-container">
+        <div class="col-md-6">
+            <textarea name="fileContents" id="editor">{{ fileContents }}</textarea>
+            <div class="edit-controls">
+                <button type="submit" class="btn btn-info">
+                    <i class="fa fa-save"></i>Save
+                </button>
+                <a href="/view/{{fileName}}" class="btn btn-info"><i class="fa fa-eye"></i>View Mode</a>
+            </div>
+        </div>
         <div class="col-md-6">
             <div id="markdownContents"></div>
         </div>
-        <div class="col-md-6">
-            <form role="form" method="post" action="/view/{{fileName}}">
-                <textarea name="fileContents" id="fileContents">{{ fileContents }}</textarea>
-                <input type="submit" class="btn btn-primary" value="Save">
-            </form>
-        </div>
     </div>
+</form>
 {% endblock %}

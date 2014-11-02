@@ -3,10 +3,17 @@
 {% block title %}Viewing - {{fileName}}{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-12">
-            <div id="markdownContents"></div>
-        </div>
-        <input type="hidden" name="fileContents" id="fileContents" value="{{ fileContents }}"/>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="markdownContents"></div>
     </div>
+    <input type="hidden" name="fileContents" id="editor" value="{{ fileContents }}"/>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="/edit/{{fileName}}" class="btn btn-info">Edit</a>
+    </div>
+</div>
 {% endblock %}

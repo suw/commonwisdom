@@ -38,18 +38,20 @@ class ViewFileController
     /**
      * Render the edit view of a file
      *
-     * @param $fileName
+     * @param String $fileName
+     * @param bool   $saveSuccess
      * @return mixed
      */
-    public function renderEditFileView($fileName) {
+    public function renderEditFileView($fileName, $saveSuccess = false) {
 
         $fileContents = $this->getFileContents($fileName);
 
         $template = $this->twig->loadTemplate('edit.html');
         return $template->render(
             array(
-                'fileContents' => $fileContents,
-                'fileName'    => $fileName
+                'fileContents'      => $fileContents,
+                'fileName'          => $fileName,
+                'displaySavedNote'  => $saveSuccess
             )
         );
     }
@@ -104,7 +106,7 @@ class ViewFileController
         $fileLocation = $this->makeFileLocation($fileName);
         file_put_contents($fileLocation, $request->get('fileContents'));
 
-        return $this->renderFile($fileName);
+        return $this->renderEditFileView($fileName, true);
     }
 
     /**
@@ -144,12 +146,4 @@ class ViewFileController
         return FILE_DIRECTORY . '/' . $fileName;
     }
 
-
-    /**
-     * Load the layout
-     */
-    public function render()
-    {
-        // TODO: Is this still needed?
-    }
 }

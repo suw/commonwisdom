@@ -1,6 +1,6 @@
 $(function() {
 
-    var options = {
+    var markedOptions = {
         gfm: true,
         tables: true,
         breaks: false,
@@ -9,14 +9,20 @@ $(function() {
     };
 
     var renderMarkdown = function() {
-        $('#markdownContents').html(marked($('#fileContents').val(), options));
+        $("#markdownContents").html(marked($("#editor").val(), markedOptions));
     };
 
-
-    $('#fileContents').keyup(function() {
+    $("#editor").keyup(function() {
         renderMarkdown();
     });
 
-    // Init
+
+    /**
+     * Init the app
+     */
+
     renderMarkdown();
+    $("#editor").autosize();
+    $("#save-success").fadeOut(1500);
+
 });
