@@ -116,23 +116,51 @@ class ViewFileController
      */
     public function renderFileList()
     {
-        $files = scandir(FILE_DIRECTORY);
-
-        // Only show markdown files
-        $filterForMarkdown = function($fileName) {
-            return strpos($fileName, '.md') !== false || strpos($fileName, '.MD') !== false;
-        };
-        $files = array_filter($files, function($fileName) {
-            return strpos($fileName, '.md') !== false
-                || strpos($fileName, '.MD') !== false;
-        });
-
+        $files = $this->getFileList();
         $template = $this->twig->loadTemplate('viewFileList.html');
         return $template->render(
             array(
                 'files' => $files
             )
         );
+    }
+
+    /**
+     * Get the list of files we can edit/view
+     *
+     * @return array
+     */
+    private function getFileList() {
+
+        $files = array();
+        foreach (new \DirectoryIterator(FILE_DIRECTORY) as $fileInfo) {
+            $fileName = $fileInfo->getFilename();
+            if (strpos($fileName, '.md') !== false
+                || strpos($fileName, '.MD') !== false) {
+                $files[] = array(
+                    'fileName' => $fileName,
+                    'lastModified' => $fileInfo->getMTime()
+                );
+            }
+        }
+
+        $sortByModifiedTime = function($fileA, $fileB) {
+            if ($fileA['lastModified'] == $fileB['lastModified']) {
+                return 0;
+            }
+            return ($fileA['lastModified'] < $fileB['lastModified']) ? 1 : -1;
+        };
+
+        usort($files, $sortByModifiedTime);
+
+        $formatModifiedTime = function($fileInfo) {
+            $fileInfo['lastModified'] = date(DATE_RFC2822, $fileInfo['lastModified']);
+            return $fileInfo;
+        };
+
+        $files = array_map($formatModifiedTime, $files);
+
+        return $files;
     }
 
     /**

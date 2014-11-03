@@ -9,7 +9,13 @@
             <ul class="list-group">
                 {% for file in files %}
                     <li class="list-group-item">
-                        <h3>{{file}} <small><a href="/view/{{file}}">View</a>&mdash;<a href="/edit/{{file}}">Edit</a></small></h3>
+                        <h3>{{file.fileName}}
+                            <small>
+                                <a href="/view/{{file.fileName}}">View</a>
+                                <a href="/edit/{{file.fileName}}">Edit</a>
+                                Last modified: {{file.lastModified}}
+                            </small>
+                        </h3>
                     </li>
                 {% endfor %}
             </ul>
