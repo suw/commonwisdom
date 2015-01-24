@@ -1,6 +1,8 @@
 # Commonwisdom
 Simple local personal Markdown wiki.
 
+![](http://i.imgur.com/vJL8zNy.png)
+
 ## Requirements
 * PHP 5.4+
 * Webserver - For the designed use case of Commonwisdom, the [PHP built-in web server](http://php.net/manual/en/features.commandline.webserver.php)
