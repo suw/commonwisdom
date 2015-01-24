@@ -16,12 +16,12 @@
   font-size: 0.8em;
   text-align: center; }
 
-#markdownContents {
+#markdown-contents {
   border: 1px solid #bebebe;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 10px;
   font-family: "Lato", sans-serif; }
-  #markdownContents h1, #markdownContents h2, #markdownContents h3, #markdownContents h4, #markdownContents h6, #markdownContents h6 {
+  #markdown-contents h1, #markdown-contents h2, #markdown-contents h3, #markdown-contents h4, #markdown-contents h6, #markdown-contents h6 {
     margin-top: 5px; }
 
 #save-success {

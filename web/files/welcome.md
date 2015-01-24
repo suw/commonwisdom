@@ -17,7 +17,10 @@ sanitize: true
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/) for icons
 
 ### Version
-1.0alpha
 
+1.1.0
+
+
+#### Did I mention there's gifs?
 
 ![](http://i.imgur.com/2sREC.gif)

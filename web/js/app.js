@@ -9,7 +9,7 @@ $(function() {
     };
 
     var renderMarkdown = function() {
-        $("#markdownContents").html(marked($("#editor").val(), markedOptions));
+        $("#markdown-contents").html(marked($("#editor").val(), markedOptions));
     };
 
     $("#editor").keyup(function() {
