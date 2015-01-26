@@ -1,7 +1,7 @@
 {
     "name": "suw/commonwisdom",
-    "description": "PHP Powered Markdown File Browser",
-    "keywords" : ["markdown", "browser", "php"],
+    "description": "PHP Powered Markdown Wiki",
+    "keywords" : ["markdown", "wiki", "php"],
     "autoload": {
         "psr-0": { "suw\\commonwisdom": "src/" }
     },
