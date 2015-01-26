@@ -3,7 +3,7 @@
 commonwisdom is a simple way of editing and viewing your markdown files, based on [fredoliveira/commonplace](https://github.com/fredoliveira/commonplace) but written in PHP to make running on your own computer super easy.
 
 ### Tech
-* Markdown rendering: commonwisdom's markdown is rendered by [marked](https://github.com/chjj/marked) and supports [github flavored](https://help.github.com/articles/github-flavored-markdown/) markdown. For those familiar with marked, the following options are used:  
+* commonwisdom's markdown is rendered by [marked](https://github.com/chjj/marked) and supports [github flavored](https://help.github.com/articles/github-flavored-markdown/) markdown. For those familiar with marked, the following options are used:  
 ``` 
 gfm: true,
 tables: true,
